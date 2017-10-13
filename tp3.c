@@ -28,6 +28,10 @@ void afficher_Liste(T_Liste * liste) {
     printf("\n");
 }
 
+void afficher_Element(T_Element * element) {
+    if (element!=NULL) printf("%s \n", element->valeur);
+}
+
 int insererElement(T_Liste *list, char *val){
     T_Element *nouveau = creerElement(val);
     strcpy(nouveau->valeur,val);
@@ -69,13 +73,11 @@ int insererElement(T_Liste *list, char *val){
     return 0;
 }
 
-/*
 T_Element *rechercherElement(T_Liste *list, char *val){
 
+    if(list->taille == 0) return NULL;
     T_Element *curseur = malloc(sizeof(T_Element));
     curseur = list->tete;
-    if(list->taille == 0) return NULL;
     while(curseur != NULL && strcasecmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     return curseur;
 }
-*/

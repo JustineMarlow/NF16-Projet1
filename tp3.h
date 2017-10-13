@@ -21,10 +21,12 @@ T_Element *creerElement (char *val);
 
 T_Liste *creerListe ();
 
+void afficher_Element(T_Element * element);
+
 void afficher_Liste(T_Liste * liste);
 
 int insererElement(T_Liste *list, char *val);
 
-//T_Element *rechercherElement(T_Liste *list, char *val);
+T_Element *rechercherElement(T_Liste *list, char *val);
 
 #endif

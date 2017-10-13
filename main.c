@@ -16,5 +16,9 @@ int main()
     afficher_Liste(liste);
     insererElement(liste, "mamamia");
     afficher_Liste(liste);
+
+    T_Element * a_trouver = rechercherElement(liste, "zorro");
+    afficher_Element(a_trouver);
+
     return 0;
 }
