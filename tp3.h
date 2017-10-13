@@ -29,4 +29,6 @@ int insererElement(T_Liste *list, char *val);
 
 T_Element *rechercherElement(T_Liste *list, char *val);
 
+//int supprimerElement(T_Liste* list, char* val);
+
 #endif
