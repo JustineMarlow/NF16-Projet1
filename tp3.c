@@ -22,7 +22,7 @@ void afficher_Liste(T_Liste * liste) {
     curseur=liste->tete;
     printf("taille : %d \n", liste->taille);
     for (i=0; i<liste->taille; i++){
-        printf("%s \n",curseur->valeur);
+        afficher_Element(curseur);
         curseur=curseur->suivant;
     }
     printf("\n");
@@ -47,7 +47,8 @@ int insererElement(T_Liste *list, char *val){
     T_Element *curseur = malloc(sizeof(T_Element));
     curseur = list->tete;
     while(curseur->suivant != NULL && strcmp(curseur->valeur,val)<0) curseur = curseur->suivant;
-    if(strcmp(curseur->valeur,val) == 0) {free(curseur); return -1; } //échec car existe déjà
+    if(strcmp(curseur->valeur,val) == 0) {//free(curseur);
+    return -1; } //échec car existe déjà
 
     //insertion en tete
     if(curseur == list->tete && strcmp(curseur->valeur,val)>0){
@@ -55,7 +56,7 @@ int insererElement(T_Liste *list, char *val){
         curseur->precedent = nouveau;
         list->taille++;
         list->tete = nouveau;
-        free(curseur);
+        //free(curseur);
         return 0;
     }
     //insertion en queue
@@ -64,7 +65,7 @@ int insererElement(T_Liste *list, char *val){
         curseur->suivant = nouveau;
         list->taille++;
         list->queue = nouveau;
-        free(curseur);
+        //free(curseur);
         return 0;
     }
     //insertion ailleurs
@@ -73,7 +74,7 @@ int insererElement(T_Liste *list, char *val){
     curseur->precedent->suivant=nouveau;
     curseur->precedent=nouveau;
     list->taille++;
-    free(curseur);
+    //free(curseur);
     return 0;
 }
 
