@@ -44,8 +44,7 @@ int insererElement(T_Liste *list, char *val){
         return 0;
     }
     //sinon, recherche de l'endroit où il faut insérer
-    T_Element *curseur = malloc(sizeof(T_Element));
-    curseur = list->tete;
+    T_Element *curseur = list->tete;
     while(curseur->suivant != NULL && strcmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     if(strcmp(curseur->valeur,val) == 0) {//free(curseur);
     return -1; } //échec car existe déjà
@@ -56,7 +55,6 @@ int insererElement(T_Liste *list, char *val){
         curseur->precedent = nouveau;
         list->taille++;
         list->tete = nouveau;
-        //free(curseur);
         return 0;
     }
     //insertion en queue
@@ -65,7 +63,6 @@ int insererElement(T_Liste *list, char *val){
         curseur->suivant = nouveau;
         list->taille++;
         list->queue = nouveau;
-        //free(curseur);
         return 0;
     }
     //insertion ailleurs
@@ -74,7 +71,6 @@ int insererElement(T_Liste *list, char *val){
     curseur->precedent->suivant=nouveau;
     curseur->precedent=nouveau;
     list->taille++;
-    //free(curseur);
     return 0;
 }
 
@@ -86,3 +82,10 @@ T_Element *rechercherElement(T_Liste *list, char *val){
     while(curseur != NULL && strcasecmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     return curseur;
 }
+
+int supprimerElement(T_Liste* list, char* val){
+return 0;
+
+
+
+};
