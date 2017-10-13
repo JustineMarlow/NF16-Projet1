@@ -20,5 +20,20 @@ int main()
     T_Element * a_trouver = rechercherElement(liste, "zorro");
     afficher_Element(a_trouver);
 
+    int res = supprimerElement(liste, "beta");
+    if (res == 0 ) printf("Suppression reussie \n");
+    else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
+    res = supprimerElement(liste, "zorro");
+    if (res == 0 ) printf("Suppression reussie \n");
+    else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
+    res = supprimerElement(liste, "abracadabra");
+    if (res == 0 ) printf("Suppression reussie \n");
+    else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
     return 0;
 }

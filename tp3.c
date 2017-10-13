@@ -84,8 +84,27 @@ T_Element *rechercherElement(T_Liste *list, char *val){
 }
 
 int supprimerElement(T_Liste* list, char* val){
-return 0;
 
+    T_Element* curseur = rechercherElement(list, val);
+    if (curseur==NULL) return -1; //liste vide ou élément pas dans la liste
+    if (curseur==list->tete){
+        curseur->suivant->precedent=NULL;
+        list->tete=curseur->suivant;
+        free(curseur);
+        list->taille--;
+        return 0;
+    }
+    if (curseur==list->queue){
+        curseur->precedent->suivant=NULL;
+        list->queue=curseur->suivant;
+        free(curseur);
+        list->taille--;
+        return 0;
 
-
+    }
+    curseur->precedent->suivant=curseur->suivant;
+    curseur->suivant->precedent=curseur->precedent;
+    free(curseur);
+    list->taille--;
+    return 0;
 };
