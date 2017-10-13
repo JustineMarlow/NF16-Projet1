@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "tp3.h"
 
 T_Element *creerElement (char *val) {
@@ -72,6 +69,7 @@ int insererElement(T_Liste *list, char *val){
     return 0;
 }
 
+/*
 T_Element *rechercherElement(T_Liste *list, char *val){
 
     T_Element *curseur = malloc(sizeof(T_Element));
@@ -80,3 +78,4 @@ T_Element *rechercherElement(T_Liste *list, char *val){
     while(curseur != NULL && strcasecmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     return curseur;
 }
+*/
