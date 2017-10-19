@@ -7,18 +7,12 @@ int main()
     T_Liste* liste =creerListe();
     if (liste->taille==0) printf("la liste est vide \n");
     insererElement(liste, "test");
-    afficher_Liste(liste);
     insererElement(liste, "zorro");
-    afficher_Liste(liste);
     insererElement(liste, "abracadabra");
-    afficher_Liste(liste);
     insererElement(liste, "beta");
-    afficher_Liste(liste);
     insererElement(liste, "mamamia");
-    afficher_Liste(liste);
 
     T_Element * a_trouver = rechercherElement(liste, "zorro");
-    afficher_Element(a_trouver);
 
     int res = supprimerElement(liste, "beta");
     if (res == 0 ) printf("Suppression reussie \n");
@@ -33,6 +27,25 @@ int main()
     res = supprimerElement(liste, "abracadabra");
     if (res == 0 ) printf("Suppression reussie \n");
     else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
+    res = supprimerElement(liste, "mamamia");
+    if (res == 0 ) printf("Suppression reussie \n");
+    else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
+    res = supprimerElement(liste, "test");
+    if (res == 0 ) printf("Suppression reussie \n");
+    else printf("echec de suppression \n");
+    afficher_Liste(liste);
+
+    insererElement(liste, "test");
+    insererElement(liste, "zorro");
+    insererElement(liste, "abracadabra");
+    insererElement(liste, "beta");
+    insererElement(liste, "mamamia");
+
+    supprimerListe(liste);
     afficher_Liste(liste);
 
     return 0;

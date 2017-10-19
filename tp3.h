@@ -31,4 +31,8 @@ T_Element *rechercherElement(T_Liste *list, char *val);
 
 int supprimerElement(T_Liste* list, char* val);
 
+void supprimerTete(T_Liste* list);
+
+void supprimerListe(T_Liste *list); //pour l'instant vide la liste mais ne la supprime pas
+
 #endif

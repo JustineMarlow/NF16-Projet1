@@ -74,7 +74,7 @@ int insererElement(T_Liste *list, char *val){
     return 0;
 }
 
-T_Element *rechercherElement(T_Liste *list, char *val){
+T_Element *rechercherElement(T_Liste* list, char *val){
 
     if(list->taille == 0) return NULL;
     T_Element *curseur = malloc(sizeof(T_Element));
@@ -85,8 +85,16 @@ T_Element *rechercherElement(T_Liste *list, char *val){
 
 int supprimerElement(T_Liste* list, char* val){
 
+    if (list->taille==0) return -1; //liste vide
     T_Element* curseur = rechercherElement(list, val);
-    if (curseur==NULL) return -1; //liste vide ou élément pas dans la liste
+    if (curseur==NULL) return -1; //élément pas dans la liste
+    if (curseur==list->tete && curseur==list->queue){
+        list->tete=NULL;
+        list->queue=NULL;
+        free(curseur);
+        list->taille--;
+        return 0;
+    }
     if (curseur==list->tete){
         curseur->suivant->precedent=NULL;
         list->tete=curseur->suivant;
@@ -96,7 +104,7 @@ int supprimerElement(T_Liste* list, char* val){
     }
     if (curseur==list->queue){
         curseur->precedent->suivant=NULL;
-        list->queue=curseur->suivant;
+        list->queue=curseur->precedent;
         free(curseur);
         list->taille--;
         return 0;
@@ -108,3 +116,42 @@ int supprimerElement(T_Liste* list, char* val){
     list->taille--;
     return 0;
 };
+
+void supprimerTete(T_Liste* list)
+{
+    if (list->tete==list->queue)
+    {
+        free(list->tete);
+        list->tete=NULL;
+        list->queue=NULL;
+        list->taille=0;
+    }
+    else
+    {
+        T_Element* curseur = list->tete;
+        curseur->suivant->precedent=NULL;
+        list->tete=curseur->suivant;
+        free(curseur);
+        list->taille--;
+    }
+}
+
+void supprimerListe(T_Liste* list){
+    /* Solution 1 : complexité pas top : n²
+    while (list->taille >0){
+        int res=supprimerElement(list,list->tete->valeur);
+        if (res==-1) throw "erreur";
+        }
+    */
+    //Solution 2
+    while(list->taille!=0)
+        supprimerTete(list);
+};
+
+
+
+
+
+
+
+
