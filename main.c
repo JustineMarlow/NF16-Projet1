@@ -4,49 +4,24 @@
 
 int main()
 {
-    T_Liste* liste =creerListe();
-    if (liste->taille==0) printf("la liste est vide \n");
-    insererElement(liste, "test");
-    insererElement(liste, "zorro");
-    insererElement(liste, "abracadabra");
-    insererElement(liste, "beta");
-    insererElement(liste, "mamamia");
+    T_Liste* liste1 =creerListe();
+    insererElement(liste1, "test");
+    insererElement(liste1, "mamamia");
+    afficher_Liste(liste1);
+    afficher_Element(rechercherElement(liste1,"test"));
 
-    T_Element * a_trouver = rechercherElement(liste, "zorro");
+    T_Liste* liste2 =creerListe();
+    insererElement(liste2, "abracadabra");
+    insererElement(liste2, "zorro");
+    insererElement(liste2, "beta");
+    afficher_Liste(liste2);
+    int res=supprimerElement(liste2,"beta");
+    afficher_Liste(liste2);
 
-    int res = supprimerElement(liste, "beta");
-    if (res == 0 ) printf("Suppression reussie \n");
-    else printf("echec de suppression \n");
-    afficher_Liste(liste);
-
-    res = supprimerElement(liste, "zorro");
-    if (res == 0 ) printf("Suppression reussie \n");
-    else printf("echec de suppression \n");
-    afficher_Liste(liste);
-
-    res = supprimerElement(liste, "abracadabra");
-    if (res == 0 ) printf("Suppression reussie \n");
-    else printf("echec de suppression \n");
-    afficher_Liste(liste);
-
-    res = supprimerElement(liste, "mamamia");
-    if (res == 0 ) printf("Suppression reussie \n");
-    else printf("echec de suppression \n");
-    afficher_Liste(liste);
-
-    res = supprimerElement(liste, "test");
-    if (res == 0 ) printf("Suppression reussie \n");
-    else printf("echec de suppression \n");
-    afficher_Liste(liste);
-
-    insererElement(liste, "test");
-    insererElement(liste, "zorro");
-    insererElement(liste, "abracadabra");
-    insererElement(liste, "beta");
-    insererElement(liste, "mamamia");
-
-    supprimerListe(liste);
-    afficher_Liste(liste);
+    T_Liste* liste3 =fusionnerListes(liste1,liste2);
+    afficher_Liste(liste3);
+    supprimerListe(liste3);
+    afficher_Liste(liste3);
 
     return 0;
 }

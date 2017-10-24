@@ -31,8 +31,10 @@ T_Element *rechercherElement(T_Liste *list, char *val);
 
 int supprimerElement(T_Liste* list, char* val);
 
-void supprimerTete(T_Liste* list);
+int supprimerListe(T_Liste *list);
 
-void supprimerListe(T_Liste *list); //pour l'instant vide la liste mais ne la supprime pas
+void ajout_queue(T_Liste* list, char* val);
+
+T_Liste *fusionnerListes(T_Liste *list1, T_Liste *list2);
 
 #endif

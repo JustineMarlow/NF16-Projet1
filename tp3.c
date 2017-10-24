@@ -18,15 +18,13 @@ T_Liste *creerListe () {
 
 void afficher_Liste(T_Liste * liste) {
     unsigned int i;
-    T_Element* curseur=malloc(sizeof(T_Element));
-    curseur=liste->tete;
+    T_Element* curseur=liste->tete;
     printf("taille : %d \n", liste->taille);
     for (i=0; i<liste->taille; i++){
         afficher_Element(curseur);
         curseur=curseur->suivant;
     }
     printf("\n");
-    free(curseur);
 }
 
 void afficher_Element(T_Element * element) {
@@ -77,8 +75,7 @@ int insererElement(T_Liste *list, char *val){
 T_Element *rechercherElement(T_Liste* list, char *val){
 
     if(list->taille == 0) return NULL;
-    T_Element *curseur = malloc(sizeof(T_Element));
-    curseur = list->tete;
+    T_Element *curseur = list->tete;
     while(curseur != NULL && strcasecmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     return curseur;
 }
@@ -117,37 +114,54 @@ int supprimerElement(T_Liste* list, char* val){
     return 0;
 };
 
-void supprimerTete(T_Liste* list)
-{
-    if (list->tete==list->queue)
-    {
-        free(list->tete);
-        list->tete=NULL;
-        list->queue=NULL;
-        list->taille=0;
-    }
-    else
-    {
-        T_Element* curseur = list->tete;
-        curseur->suivant->precedent=NULL;
-        list->tete=curseur->suivant;
-        free(curseur);
-        list->taille--;
-    }
-}
 
-void supprimerListe(T_Liste* list){
-    /* Solution 1 : complexité pas top : n²
-    while (list->taille >0){
-        int res=supprimerElement(list,list->tete->valeur);
-        if (res==-1) throw "erreur";
-        }
-    */
-    //Solution 2
-    while(list->taille!=0)
-        supprimerTete(list);
+int supprimerListe(T_Liste* list){
+    T_Element *curseur = list->tete;
+    T_Element *tmp;
+    while(curseur->suivant != NULL){
+        tmp = curseur->suivant;
+        free(curseur);
+        curseur = tmp;
+    }
+    free(list);
+    //T_Liste* nouvelle = creerListe ();
+    //int res=insererElement(nouvelle, "haha");
+    return 0;
 };
 
+void ajout_queue(T_Liste* list, char* val){
+    T_Element* nouveau = creerElement(val);
+    if (list->taille==0) {
+        list->tete=nouveau;
+        list->queue=nouveau;
+        list->taille++;}
+    else {
+        list->queue->suivant=nouveau;
+        nouveau->precedent=list->queue;
+        list->taille++;
+        list->queue=nouveau;
+    };
+};
+
+T_Liste *fusionnerListes(T_Liste *list1, T_Liste *list2){
+    T_Liste* fusion=creerListe();
+    T_Element* curseur1=list1->tete;
+    T_Element* curseur2=list2->tete;
+
+    while(curseur1!=NULL || curseur2!=NULL){
+        if (curseur1==NULL || (curseur2!=NULL && strcmp(curseur1->valeur,curseur2->valeur)>=0)){
+            ajout_queue(fusion,curseur2->valeur);
+            curseur2=curseur2->suivant;
+        }
+        else {
+                if (curseur2==NULL || (curseur1!=NULL && strcmp(curseur1->valeur,curseur2->valeur)<0)){
+                    ajout_queue(fusion,curseur1->valeur);
+                    curseur1=curseur1->suivant;
+                }
+        }
+    }
+    return fusion;
+};
 
 
 
