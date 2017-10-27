@@ -41,11 +41,11 @@ int insererElement(T_Liste *list, char *val){
         list->taille++;
         return 0;
     }
-    //sinon, recherche de l'endroit où il faut insérer
+    //sinon, recherche de l'endroit ou il faut inserer
     T_Element *curseur = list->tete;
     while(curseur->suivant != NULL && strcmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     if(strcmp(curseur->valeur,val) == 0) {//free(curseur);
-    return -1; } //échec car existe déjà
+    return -1; } //echec car existe deja¡
 
     //insertion en tete
     if(curseur == list->tete && strcmp(curseur->valeur,val)>0){
@@ -84,7 +84,7 @@ int supprimerElement(T_Liste* list, char* val){
 
     if (list->taille==0) return -1; //liste vide
     T_Element* curseur = rechercherElement(list, val);
-    if (curseur==NULL) return -1; //élément pas dans la liste
+    if (curseur==NULL) return -1; //element pas dans la liste
     if (curseur==list->tete && curseur==list->queue){
         list->tete=NULL;
         list->queue=NULL;
@@ -114,14 +114,16 @@ int supprimerElement(T_Liste* list, char* val){
     return 0;
 };
 
-
 int supprimerListe(T_Liste* list){
+    if(list->tete!=NULL)
+    {
     T_Element *curseur = list->tete;
     T_Element *tmp;
     while(curseur->suivant != NULL){
         tmp = curseur->suivant;
         free(curseur);
         curseur = tmp;
+    }
     }
     free(list);
     //T_Liste* nouvelle = creerListe ();
@@ -162,10 +164,4 @@ T_Liste *fusionnerListes(T_Liste *list1, T_Liste *list2){
     }
     return fusion;
 };
-
-
-
-
-
-
 
