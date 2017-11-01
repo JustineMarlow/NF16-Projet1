@@ -2,6 +2,10 @@
 
 T_Element *creerElement (char *val) {
     T_Element* newElement=malloc(sizeof(T_Element));
+    if(newElement == NULL){
+        printf("Allocation impossible ! \n");
+        return NULL;
+    }
     strcpy(newElement->valeur,val);
     newElement->suivant=NULL;
     newElement->precedent=NULL;
@@ -10,11 +14,16 @@ T_Element *creerElement (char *val) {
 
 T_Liste *creerListe () {
     T_Liste* newListe=malloc(sizeof(T_Liste));
+    if(newListe == NULL){
+        printf("Allocation impossible ! \n");
+        return NULL;
+    }
     newListe->taille=0;
     newListe->tete=NULL;
     newListe->queue=NULL;
     return newListe;
 };
+
 
 void afficher_Liste(T_Liste * liste) {
     unsigned int i;
@@ -45,7 +54,7 @@ int insererElement(T_Liste *list, char *val){
     T_Element *curseur = list->tete;
     while(curseur->suivant != NULL && strcmp(curseur->valeur,val)<0) curseur = curseur->suivant;
     if(strcmp(curseur->valeur,val) == 0) {//free(curseur);
-    return -1; } //echec car existe deja¡
+    return -1; } //echec car existe dejaÂ¡
 
     //insertion en tete
     if(curseur == list->tete && strcmp(curseur->valeur,val)>0){
