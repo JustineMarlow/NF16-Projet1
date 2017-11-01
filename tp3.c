@@ -86,7 +86,8 @@ T_Element *rechercherElement(T_Liste* list, char *val){
     if(list->taille == 0) return NULL;
     T_Element *curseur = list->tete;
     while(curseur != NULL && strcasecmp(curseur->valeur,val)<0) curseur = curseur->suivant;
-    return curseur;
+    if (curseur !=NULL && strcasecmp(curseur->valeur,val)==0) return curseur;
+    return NULL;
 }
 
 int supprimerElement(T_Liste* list, char* val){

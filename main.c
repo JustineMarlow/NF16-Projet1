@@ -16,7 +16,7 @@ int main()
     int menu;
     do
     {
-    printf("\n Menu \n");
+    printf("\n ==== Menu ==== \n");
     printf("1. Créer une liste \n");
     printf("2. Ajouter un élément dans une liste \n");
     printf("3. Supprimer un élément d'une liste \n");
@@ -70,7 +70,7 @@ int main()
                 scanf("%s",&valeur);
                 a_trouver=rechercherElement(tab[k-1],valeur);
                 if (a_trouver!=NULL) printf("Element trouvé \n");
-                else printf("Problème dans la recherche \n");
+                else printf("Element non trouvé \n");
                 a_trouver=NULL;
             }
             break;
@@ -88,9 +88,10 @@ int main()
                 supprimerListe(tab[k-1]);
                 tab[k-1] = NULL;
                 i--;
+                printf("La liste %d a été supprimée \n",k-1);
             }
             break;
-        case 7:
+        case 7: //Fusionner deux listes
             if(i==5) printf("Impossible de créer une nouvelle liste pour la fusion \n");
             else {
             printf("Entrez le numéro de la 1ere liste à fusionner \n");
