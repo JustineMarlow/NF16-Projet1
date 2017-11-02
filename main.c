@@ -88,7 +88,7 @@ int main()
                 supprimerListe(tab[k-1]);
                 tab[k-1] = NULL;
                 i--;
-                printf("La liste %d a été supprimée \n",k-1);
+                printf("La liste %d a été supprimée \n",k);
             }
             break;
         case 7: //Fusionner deux listes
